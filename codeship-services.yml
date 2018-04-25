@@ -4,8 +4,8 @@ allinone:
     - mysql
   container_name: ci_codeship_allinone
   volumes:
-    - ../:/var/www/html/ci_codeship
-    - ./conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
+    - ./:/var/www/html/ci_codeship/
+    - ./docker/conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
   ports:
     - 18080:80  #Apache httpd
     - 18443:443 #Apache httpd
