@@ -7,4 +7,4 @@
 - service: allinone
   command: ls -al
 - service: allinone
-  command: cd /var/www/html/ci_codeship && composer install --dev && ./vendor/bin/phpunit tests/Unit
+  command: /var/www/html/ci_codeship/install-and-test.sh
