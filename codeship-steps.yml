@@ -1,2 +1,4 @@
 - service: allinone
+  command: echo 12345
+- service: allinone
   command: cd /var/www/html/ci_codeship && composer install --dev && ./vendor/bin/phpunit tests/Unit
