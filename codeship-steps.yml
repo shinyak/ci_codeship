@@ -2,3 +2,12 @@
   command: ls -al /var/www/html/ci_codeship
 - service: allinone
   command: /var/www/html/ci_codeship/install-and-test.sh
+
+- type: paralel
+  steps:
+    - service: allinone
+      command: /var/www/html/ci_codeship/install-and-test.sh
+    - service: allinone
+      command: /var/www/html/ci_codeship/install-and-test.sh
+    - service: allinone
+      command: /var/www/html/ci_codeship/install-and-test.sh
