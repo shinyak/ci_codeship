@@ -1,7 +1,5 @@
 allinone:
-  build:
-    image: skanno22/ci_sample:latest
-    dockerfile: docker/Dockerfile
+  image: skanno22/ci_sample:latest
   depends_on:
     - mysql
   container_name: ci_codeship_allinone
