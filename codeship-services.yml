@@ -6,9 +6,9 @@ allinone:
   volumes:
     - ./:/var/www/html/ci_codeship/
     - ./docker/conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
-  ports:
-    - 18080:80  #Apache httpd
-    - 18443:443 #Apache httpd
+#  ports:
+#    - 18080:80  #Apache httpd
+#    - 18443:443 #Apache httpd
   environment:
     TZ: Japan
   command: /sbin/init
