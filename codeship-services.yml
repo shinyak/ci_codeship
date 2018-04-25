@@ -5,7 +5,6 @@ allinone:
   depends_on:
     - mysql
   container_name: ci_codeship_allinone
-  privileged: true
   volumes:
     - ../:/var/www/html/ci_codeship
     - ./conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
