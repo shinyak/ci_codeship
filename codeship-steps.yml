@@ -1,10 +1,8 @@
 - service: allinone
   command: pwd
 - service: allinone
-  command: ls -al /var/www/html
+  command: ls -al /var/www/html/ci_codeship
 - service: allinone
-  command: cd /var/www/html/ci_codeship
+  command: cd /var/www/html && ls -al && cd /var/www/html/ci_codeship && ls -al
 - service: allinone
-  command: ls -al
-- service: allinone
-  command: /var/www/html/ci_codeship/install-and-test.sh
+  command: cd /var/www/html/ci_codeship && ./install-and-test.sh
