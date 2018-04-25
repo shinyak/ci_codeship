@@ -3,7 +3,7 @@
 - service: allinone
   command: /var/www/html/ci_codeship/install-and-test.sh
 
-- type: paralel
+- type: parallel
   steps:
     - service: allinone
       command: /var/www/html/ci_codeship/install-and-test.sh
