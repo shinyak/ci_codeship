@@ -1,0 +1,23 @@
+allinone:
+  build:
+    image: skanno22/ci_sample:latest
+    dockerfile: docker/Dockerfile
+  depends_on:
+    - mysql
+  container_name: ci_codeship_allinone
+  privileged: true
+  volumes:
+    - ../:/var/www/html/ci_codeship
+    - ./conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
+  ports:
+    - 18080:80  #Apache httpd
+    - 18443:443 #Apache httpd
+  environment:
+    TZ: Japan
+  command: /sbin/init
+
+mysql:
+  image: mysql:5.6.39
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 1
+
