@@ -1,7 +1,7 @@
 allinone:
   image: skanno22/ci_sample:latest
-  depends_on:
-    - mysql
+#  depends_on:
+#    - mysql
   container_name: ci_codeship_allinone
   volumes:
     - ./:/var/www/html/ci_codeship/
@@ -13,8 +13,8 @@ allinone:
     TZ: Japan
   command: /sbin/init
 
-mysql:
-  image: mysql:5.6.39
-  environment:
-    MYSQL_ALLOW_EMPTY_PASSWORD: 1
-
+#mysql:
+#  image: mysql:5.6.39
+#  environment:
+#    MYSQL_ALLOW_EMPTY_PASSWORD: 1
+#
