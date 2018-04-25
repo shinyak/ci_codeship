@@ -1,4 +1,10 @@
 - service: allinone
-  command: echo 12345
+  command: pwd
+- service: allinone
+  command: ls -al /var/www/html
+- service: allinone
+  command: cd /var/www/html/ci_codeship
+- service: allinone
+  command: ls -al
 - service: allinone
   command: cd /var/www/html/ci_codeship && composer install --dev && ./vendor/bin/phpunit tests/Unit
