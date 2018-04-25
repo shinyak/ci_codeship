@@ -1,0 +1,120 @@
+# This references a standard debian container from the
+# Docker Hub https://registry.hub.docker.com/_/debian/
+# Read more about containers on our dev center
+# http://devcenter.wercker.com/docs/containers/index.html
+box:
+  #id: skanno22/ci_sample
+  #tag: latest
+  id: php
+
+dev:
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: install composer
+        code: curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+    - script:
+        name: install dependencies
+        code: composer install --no-interaction
+
+# You can also use services such as databases. Read more on our dev center:
+# http://devcenter.wercker.com/docs/services/index.html
+# services:
+    # - postgres
+    # http://devcenter.wercker.com/docs/services/postgresql.html
+
+    # - mongo
+    # http://devcenter.wercker.com/docs/services/mongodb.html
+
+# This is the build pipeline. Pipelines are the core of wercker
+# Read more about pipelines on our dev center
+# http://devcenter.wercker.com/docs/pipelines/index.html
+build:
+    # Steps make up the actions in your pipeline
+    # Read more about steps on our dev center:
+    # http://devcenter.wercker.com/docs/steps/index.html
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: install phpunit
+        code: |-
+          curl -L https://phar.phpunit.de/phpunit.phar -o /usr/local/bin/phpunit
+          chmod +x /usr/local/bin/phpunit
+    - script:
+        name: install composer
+        code: curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+    - script:
+        name: install dependencies
+        code: composer install --no-interaction
+    - script:
+        name: PHPUnit integration tests
+        code: phpunit tests/Unit
+
+test1:
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: do test
+        code: |-
+          date
+          curl -L https://phar.phpunit.de/phpunit.phar -o /usr/local/bin/phpunit
+          chmod +x /usr/local/bin/phpunit
+          curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+          composer install --no-interaction
+          phpunit tests/Unit
+          date
+
+test2:
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: do test
+        code: |-
+          date
+          curl -L https://phar.phpunit.de/phpunit.phar -o /usr/local/bin/phpunit
+          chmod +x /usr/local/bin/phpunit
+          curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+          composer install --no-interaction
+          phpunit tests/Unit
+          date
+
+test3:
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: do test
+        code: |-
+          date
+          curl -L https://phar.phpunit.de/phpunit.phar -o /usr/local/bin/phpunit
+          chmod +x /usr/local/bin/phpunit
+          curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+          composer install --no-interaction
+          phpunit tests/Unit
+          date
+
+test4:
+  steps:
+    - install-packages:
+        packages: git
+    - script:
+        name: do test
+        code: |-
+          date
+          curl -L https://phar.phpunit.de/phpunit.phar -o /usr/local/bin/phpunit
+          chmod +x /usr/local/bin/phpunit
+          curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+          composer install --no-interaction
+          phpunit tests/Unit
+          date
+
+echo1:
+  steps:
+    - script:
+        name: echo1
+        code: |-
+          echo 12345

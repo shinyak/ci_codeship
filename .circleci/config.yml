@@ -1,0 +1,30 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
+    machine: true
+
+    steps:
+      - checkout
+
+      ## Download and cache dependencies
+      #- restore_cache:
+      #    keys:
+      #    - v1-dependencies-{{ checksum "composer.json" }}
+      #    # fallback to using the latest cache if no exact match is found
+      #    - v1-dependencies-
+
+      #- run: composer install -n --prefer-dist
+
+      #- save_cache:
+      #    paths:
+      #      - ./vendor
+      #    key: v1-dependencies-{{ checksum "composer.json" }}
+        
+      # run tests!
+      - run: cd docker && docker-compose up -d
+      - run: cd docker && docker-compose run allinone /bin/bash -c 'cd /var/www/html/ci_sample && composer install --dev'
+      - run: cd docker && docker-compose run allinone /bin/bash -c 'cd /var/www/html/ci_sample && ls -al ./vendor/bin && ./vendor/bin/phpunit tests/Unit'

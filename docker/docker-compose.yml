@@ -1,0 +1,66 @@
+version: '2'
+
+services:
+  allinone:
+    image: skanno22/ci_sample:latest
+    container_name: ci_travis_allinone
+    privileged: true
+    volumes:
+      - ../:/var/www/html/ci_travis
+      - ./conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
+    ports:
+      - 18080:80  #Apache httpd
+      - 18443:443 #Apache httpd
+    environment:
+      - "TZ=Japan"
+    command: /sbin/init
+
+  test1:
+    image: skanno22/ci_sample:latest
+    container_name: ci_test1
+    privileged: true
+    volumes:
+      - ../:/var/www/html/ci_travis
+      - ./conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
+    environment:
+      - "TZ=Japan"
+
+  test2:
+    image: skanno22/ci_sample:latest
+    container_name: ci_test2
+    privileged: true
+    volumes:
+      - ../:/var/www/html/ci_travis
+      - ./conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
+    environment:
+      - "TZ=Japan"
+
+  test3:
+    image: skanno22/ci_sample:latest
+    container_name: ci_test2
+    privileged: true
+    volumes:
+      - ../:/var/www/html/ci_travis
+      - ./conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
+    environment:
+      - "TZ=Japan"
+
+  test4:
+    image: skanno22/ci_sample:latest
+    container_name: ci_test2
+    privileged: true
+    volumes:
+      - ../:/var/www/html/ci_travis
+      - ./conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
+    environment:
+      - "TZ=Japan"
+
+  test5:
+    image: skanno22/ci_sample:latest
+    container_name: ci_test2
+    privileged: true
+    volumes:
+      - ../:/var/www/html/ci_travis
+      - ./conf/httpd/httpd.conf:/etc/httpd/conf/httpd.conf
+    environment:
+      - "TZ=Japan"

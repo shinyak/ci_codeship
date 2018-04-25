@@ -1,0 +1,26 @@
+sudo: required
+
+language: php
+
+services:
+  - docker
+
+env:
+  global:
+    - DOCKER_COMPOSE_VERSION=1.10.1
+  matrix:
+    - DOCKER_SERVICE=allinone
+    - DOCKER_SERVICE=test1
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+script:
+  - cd docker
+  - "docker-compose up -d allinone"
+  - "docker-compose run allinone /bin/bash -c 'cd /var/www/html/ci_travis && composer install --dev'"
+  - "docker-compose run allinone /bin/bash -c 'cd /var/www/html/ci_travis && ls -al ./vendor/bin && ./vendor/bin/phpunit tests/Unit'"
+  - "docker-compose run allinone /bin/bash -c 'cd /var/www/html/ci_travis && ./vendor/bin/phpcs --report-width=120 --standard=PSR1 tests/Unit'"
